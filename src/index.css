@@ -1,0 +1,127 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-black;
+  }
+}
+
+@layer components {
+  .matrix-bg {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)),
+      url('https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&q=80');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+  }
+
+  .terminal-window {
+    @apply bg-black/80 rounded-lg border border-green-500/30 p-4 font-mono;
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.1);
+  }
+
+  .terminal-line {
+    @apply opacity-0;
+    animation: type 1s steps(40, end) forwards;
+  }
+
+  .terminal-prompt::before {
+    content: '> ';
+    @apply text-green-500;
+  }
+
+  .glitch-text {
+    text-shadow: 
+      0.05em 0 0 rgba(255, 0, 0, 0.75),
+      -0.025em -0.05em 0 rgba(0, 255, 0, 0.75),
+      0.025em 0.05em 0 rgba(0, 0, 255, 0.75);
+    animation: glitch 500ms infinite;
+  }
+
+  .cyber-card {
+    @apply relative overflow-hidden rounded-lg border border-green-500/20 bg-black/50 p-6 transition-all duration-300;
+  }
+
+  .cyber-card::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-r from-green-500/10 to-transparent opacity-0 transition-opacity duration-300;
+  }
+
+  .cyber-card:hover::before {
+    @apply opacity-100;
+  }
+
+  .cyber-card:hover {
+    @apply border-green-500/40 transform scale-[1.02];
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.1);
+  }
+
+  .cyber-button {
+    @apply relative overflow-hidden bg-green-500 text-black px-8 py-3 rounded font-bold transition-all duration-300;
+  }
+
+  .cyber-button::before {
+    content: '';
+    @apply absolute inset-0 bg-green-400 transform scale-x-0 origin-left transition-transform duration-300;
+  }
+
+  .cyber-button:hover::before {
+    @apply scale-x-100;
+  }
+
+  .cyber-button span {
+    @apply relative z-10;
+  }
+
+  @keyframes type {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes glitch {
+    0% {
+      text-shadow: 
+        0.05em 0 0 rgba(255, 0, 0, 0.75),
+        -0.05em -0.025em 0 rgba(0, 255, 0, 0.75),
+        -0.025em 0.05em 0 rgba(0, 0, 255, 0.75);
+    }
+    14% {
+      text-shadow: 
+        0.05em 0 0 rgba(255, 0, 0, 0.75),
+        -0.05em -0.025em 0 rgba(0, 255, 0, 0.75),
+        -0.025em 0.05em 0 rgba(0, 0, 255, 0.75);
+    }
+    15% {
+      text-shadow: 
+        -0.05em -0.025em 0 rgba(255, 0, 0, 0.75),
+        0.025em 0.025em 0 rgba(0, 255, 0, 0.75),
+        -0.05em -0.05em 0 rgba(0, 0, 255, 0.75);
+    }
+    49% {
+      text-shadow: 
+        -0.05em -0.025em 0 rgba(255, 0, 0, 0.75),
+        0.025em 0.025em 0 rgba(0, 255, 0, 0.75),
+        -0.05em -0.05em 0 rgba(0, 0, 255, 0.75);
+    }
+    50% {
+      text-shadow: 
+        0.025em 0.05em 0 rgba(255, 0, 0, 0.75),
+        0.05em 0 0 rgba(0, 255, 0, 0.75),
+        0 -0.05em 0 rgba(0, 0, 255, 0.75);
+    }
+    99% {
+      text-shadow: 
+        0.025em 0.05em 0 rgba(255, 0, 0, 0.75),
+        0.05em 0 0 rgba(0, 255, 0, 0.75),
+        0 -0.05em 0 rgba(0, 0, 255, 0.75);
+    }
+    100% {
+      text-shadow: 
+        -0.025em 0 0 rgba(255, 0, 0, 0.75),
+        -0.025em -0.025em 0 rgba(0, 255, 0, 0.75),
+        -0.025em -0.05em 0 rgba(0, 0, 255, 0.75);
+    }
+  }
+}
